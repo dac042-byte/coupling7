@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coupling - Connect. Collaborate. Create.</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Auth Pages -->
+    <div id="signin-page" class="page hidden">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h1 class="logo">💜 Coupling</h1>
+          <p class="tagline">Connect ambitious minds</p>
+
+          <form id="signin-form" class="auth-form">
+            <div class="form-group">
+              <label for="signin-email">Email</label>
+              <input type="email" id="signin-email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signin-password">Password</label>
+              <input type="password" id="signin-password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign In</button>
+
+            <p class="auth-switch">
+              Don't have an account?
+              <a href="#" id="goto-signup">Sign up</a>
+            </p>
+          </form>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="signup-page" class="page hidden">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h1 class="logo">💜 Coupling</h1>
+          <p class="tagline">Join the community</p>
+
+          <form id="signup-form" class="auth-form">
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-usertype">I am a...</label>
+              <select id="signup-usertype" required>
+                <option value="">Select type</option>
+                <option value="technical">Technical (Engineer/Developer)</option>
+                <option value="non-technical">Non-Technical (Idea Maker)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-country">Country</label>
+              <input type="text" id="signup-country" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-university">University</label>
+              <input type="text" id="signup-university" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-bio">Bio (Optional)</label>
+              <textarea id="signup-bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Account</button>
+
+            <p class="auth-switch">
+              Already have an account?
+              <a href="#" id="goto-signin">Sign in</a>
+            </p>
+          </form>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle-signup">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-page" class="page hidden">
+      <nav class="navbar">
+        <h1 class="logo">💜 Coupling</h1>
+        <div class="nav-links">
+          <button class="nav-btn" data-view="discover">
+            <span class="nav-icon">🔍</span>
+            <span>Discover</span>
+          </button>
+          <button class="nav-btn" data-view="matches">
+            <span class="nav-icon">💬</span>
+            <span>Matches</span>
+          </button>
+          <button class="nav-btn" data-view="profile">
+            <span class="nav-icon">👤</span>
+            <span>Profile</span>
+          </button>
+        </div>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle-main">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <button class="btn btn-secondary" id="signout-btn">Sign Out</button>
+        </div>
+      </nav>
+
+      <main class="main-content">
+        <!-- Discover View -->
+        <div id="discover-view" class="view">
+          <div class="discover-container">
+            <div class="swipes-info">
+              <span id="swipes-remaining">20</span> swipes remaining today
+              <button class="btn btn-small btn-premium" id="upgrade-btn">Upgrade to Premium</button>
+            </div>
+
+            <div id="card-stack" class="card-stack">
+              <div class="empty-state" id="empty-discover">
+                <h2>No more users to discover</h2>
+                <p>Check back later for new matches!</p>
+              </div>
+            </div>
+
+            <div class="swipe-actions" id="swipe-actions">
+              <button class="swipe-btn swipe-reject" id="reject-btn">
+                <span class="swipe-icon">✕</span>
+              </button>
+              <button class="swipe-btn swipe-like" id="like-btn">
+                <span class="swipe-icon">♥</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matches View -->
+        <div id="matches-view" class="view hidden">
+          <div class="matches-container">
+            <div class="matches-sidebar">
+              <h2>Your Matches</h2>
+              <div id="matches-list" class="matches-list">
+                <div class="empty-state">
+                  <p>No matches yet. Keep swiping!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-container" id="chat-container">
+              <div class="empty-state">
+                <h2>Select a match to start chatting</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile View -->
+        <div id="profile-view" class="view hidden">
+          <div class="profile-container">
+            <div class="profile-header">
+              <h2>My Profile</h2>
+            </div>
+
+            <div class="profile-content" id="profile-content">
+              <!-- Profile will be loaded here -->
+            </div>
+
+            <div class="profile-actions">
+              <button class="btn btn-secondary" id="feedback-btn">Send Feedback</button>
+              <a href="/privacy" class="btn btn-secondary">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Match Modal -->
+    <div id="match-modal" class="modal hidden">
+      <div class="modal-content match-modal-content">
+        <h1>🎉 It's a Match! 🎉</h1>
+        <p>You and <span id="match-name"></span> liked each other!</p>
+        <button class="btn btn-primary" id="close-match-modal">Start Chatting</button>
+      </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Send Feedback</h2>
+        <form id="feedback-form">
+          <textarea id="feedback-message" rows="5" placeholder="Help us improve Coupling..." required></textarea>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancel-feedback">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
