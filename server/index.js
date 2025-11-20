@@ -33,19 +33,13 @@ app.use('/api/matches', matchRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/feedback', feedbackRoutes);
 
-// Serve static files from React app in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(join(__dirname, '../client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, '../client/build', 'index.html'));
-  });
-} else {
-  // In development, serve the client from the client directory
-  app.use(express.static(join(__dirname, '../client/public')));
-  app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, '../client/public', 'index.html'));
-  });
-}
+// Serve static files (vanilla JS - no build step needed)
+app.use(express.static(join(__dirname, '../client/public')));
+
+// Serve index.html for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, '../client/public', 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
