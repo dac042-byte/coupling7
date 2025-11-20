@@ -577,6 +577,9 @@ async function handleFeedback(e) {
 async function init() {
   initTheme();
 
+  // Start with auth page visible while checking login status
+  showPage('signin');
+
   // Check if user is logged in
   try {
     const user = await API.auth.getCurrentUser();
@@ -584,6 +587,7 @@ async function init() {
     showPage('main');
     showView('discover');
   } catch (error) {
+    // User not logged in, stay on signin page
     showPage('signin');
   }
 

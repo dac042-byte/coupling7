@@ -481,9 +481,10 @@ body {
 /* Matches View */
 .matches-container {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 450px 1fr;
   gap: 2rem;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 200px);
+  max-height: 800px;
 }
 
 .matches-sidebar {
@@ -492,6 +493,7 @@ body {
   padding: 1.5rem;
   border: 2px solid var(--border-color);
   overflow-y: auto;
+  max-height: 100%;
 }
 
 .matches-sidebar h2 {
@@ -557,6 +559,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  max-height: 100%;
 }
 
 .chat-header {
